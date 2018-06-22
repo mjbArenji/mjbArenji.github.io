@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-This is the iframe.
-
 <script type="text/javascript">
 (function() {
     var allowedDomain = "mbradburn.github.com"
@@ -14,11 +12,14 @@ This is the iframe.
     }
 
     function handleRequest(event) {
+		console.log('Here in handleRequest');
+		console.log('Event: ', event);
         if (isOriginAllowed(event.origin)) {
             var data = JSON.parse(event.data);
 
 			var key = "mjb-save-key";
 			localStorage.setItem(key, data)
+			console.log('saved localstorage')
         } else {
 			console.error('Origin not allowed: ', event.origin);
 		}
