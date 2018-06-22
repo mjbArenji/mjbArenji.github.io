@@ -6,7 +6,7 @@
 	var localStorage = window.localStorage;
 
     function handleRequest(event) {
-		console.log('Here in handleRequest');
+		console.log('handleRequest origin: ', event.origin);
         if (event.origin === "https://mbradburn.github.io") {
             var data = event.data;
 			var key = "mjb-save-key";
