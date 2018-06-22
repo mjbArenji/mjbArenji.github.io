@@ -2,11 +2,16 @@
 <html>
 <p>
 No interesting content here.
+<div>
+	<button onclick="onButtonClick()">Recv</button>
+</div>
 </p>
 <script>
-(function() {
-	var key = "mjb-save-key";
-	data = localStorage.getItem(key)
+function onButtonClick() {
+	console.log('Domain: ', document.domain);
+	document.domain = "github.io";
+	var localStorage = window.localStorage;
+	data = localStorage.getItem("mjb")
 	console.log('Got data: ', data)
 )
 </script>
