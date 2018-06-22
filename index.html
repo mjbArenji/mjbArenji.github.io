@@ -8,10 +8,9 @@ No interesting content here.
 </p>
 <script>
 function onButtonClick() {
-	console.log('Domain: ', document.domain);
-	document.domain = "github.io";
 	var localStorage = window.localStorage;
-	data = localStorage.getItem("mjb");
+	console.log('Checking mjb-save-key');
+	data = localStorage.getItem("mjb-save-key");
 	console.log('Got data: ', data);
 }
 </script>
