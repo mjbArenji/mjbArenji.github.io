@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script type="text/javascript">
+(function() {
+    var allowedDomain = "mbradburn.github.com"
+	var localStorage = window.localStorage;
+
+    function isOriginAllowed(origin) {
+        var domain = origin.replace(/^https?:\/\/|:\d{1,4}$/g, "").toLowerCase();
+		return domain === allowedDomain;
+    }
+
+    function handleRequest(event) {
+        if (isOriginAllowed(event.origin)) {
+            var data = JSON.parse(event.data);
+
+			var key = "mjb-save-key";
+			localStorage.setItem(key, data)
+        } else {
+			console.error('Origin not allowed: ', event.origin);
+		}
+    }
+
+    if (window.addEventListener) {
+        window.addEventListener("message", handleRequest, false);
+    } else if (window.attachEvent) {
+		// attachEvent is for old IE
+        window.attachEvent("onmessage", handleRequest);
+    }
+})();
+</script>
+</body>
