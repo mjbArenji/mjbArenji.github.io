@@ -3,18 +3,12 @@
 <body>
 <script type="text/javascript">
 (function() {
-    var allowedDomain = "mbradburn.github.com"
 	var localStorage = window.localStorage;
-
-    function isOriginAllowed(origin) {
-        var domain = origin.replace(/^https?:\/\/|:\d{1,4}$/g, "").toLowerCase();
-		return domain === allowedDomain;
-    }
 
     function handleRequest(event) {
 		console.log('Here in handleRequest');
 		console.log('Event: ', event);
-        if (isOriginAllowed(event.origin)) {
+        if (event.origin === "https://mbradburn.github.io") {
             var data = JSON.parse(event.data);
 
 			var key = "mjb-save-key";
