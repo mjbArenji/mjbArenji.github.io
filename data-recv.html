@@ -3,12 +3,13 @@
 <body>
 <script type="text/javascript">
 (function() {
-	var localStorage = window.localStorage;
+  var localStorage = window.localStorage;
 
-    function handleRequest(event) {
-		console.log('handleRequest v1 from origin: ', event.origin);
-        if (event.origin !== "https://mbradburn.github.io") {
-			console.error('Origin not allowed: ', event.origin);
+  function handleRequest(event) {
+    console.log('handleRequest v2 from origin: ', event.origin);
+    if (event.origin !== "https://mbradburn.github.io") {
+      console.error('Origin not allowed: ', event.origin);
+      return;
 		}
 		var data = event.data;
 		console.log('data: ', data);
@@ -19,13 +20,13 @@
 				localStorage.setItem(key.toString(), data[key]);
 			}
 		}
-    }
-    if (window.addEventListener) {
-        window.addEventListener("message", handleRequest, false);
-    } else if (window.attachEvent) {
-		// attachEvent is for old IE
-        window.attachEvent("onmessage", handleRequest);
-    }
+  }
+  if (window.addEventListener) {
+    window.addEventListener("message", handleRequest, false);
+  } else if (window.attachEvent) {
+    // attachEvent is for old IE
+    window.attachEvent("onmessage", handleRequest);
+  }
 })();
 </script>
 </body>
