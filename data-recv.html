@@ -6,7 +6,7 @@
 	var localStorage = window.localStorage;
 
     function handleRequest(event) {
-		console.log('handleRequest from origin: ', event.origin);
+		console.log('handleRequest v1 from origin: ', event.origin);
         if (event.origin !== "https://mbradburn.github.io") {
 			console.error('Origin not allowed: ', event.origin);
 		}
