@@ -11,9 +11,12 @@
 			console.error('Origin not allowed: ', event.origin);
 		}
 		var data = event.data;
+		console.log('data: ', data);
 		for (var key in data) {
+			console.log('key: ', key);
 			if (Object.prototype.hasOwnProperty(key)) {
-				localStorage.setItem(key, data[key]);
+				console.log('set key: ', key.toString());
+				localStorage.setItem(key.toString(), data[key]);
 			}
 		}
     }
