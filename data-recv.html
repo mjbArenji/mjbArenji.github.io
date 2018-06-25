@@ -6,18 +6,17 @@
 	var localStorage = window.localStorage;
 
     function handleRequest(event) {
-		console.log('handleRequest origin: ', event.origin);
-        if (event.origin === "https://mbradburn.github.io") {
-            var data = event.data;
-			var key = "mjb-save-key";
-
-			localStorage.setItem(key, data)
-			console.log('saved localstorage')
-        } else {
+		console.log('handleRequest from origin: ', event.origin);
+        if (event.origin !== "https://mbradburn.github.io") {
 			console.error('Origin not allowed: ', event.origin);
 		}
+		var data = event.data;
+		for (var key in data) {
+			if (Object.prototype.hasOwnProperty(key)) {
+				localStorage.setItem(key, data[key]);
+			}
+		}
     }
-
     if (window.addEventListener) {
         window.addEventListener("message", handleRequest, false);
     } else if (window.attachEvent) {
