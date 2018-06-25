@@ -14,7 +14,7 @@
 		console.log('data: ', data);
 		for (var key in data) {
 			console.log('key: ', key);
-			if (Object.prototype.hasOwnProperty(key)) {
+			if (Object.prototype.hasOwnProperty.call(data, key)) {
 				console.log('set key: ', key.toString());
 				localStorage.setItem(key.toString(), data[key]);
 			}
